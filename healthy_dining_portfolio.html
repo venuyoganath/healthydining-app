@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Dining App | UX Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2ECC71;
+            --secondary-color: #FF6B6B;
+            --accent-color: #3498DB;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --spacing-xs: 1rem;
+            --spacing-sm: 2rem;
+            --spacing-md: 4rem;
+            --spacing-lg: 6rem;
+            --spacing-xl: 8rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+            padding: var(--spacing-lg) 2rem;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .meta-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-number {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .overview-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), #27AE60);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card-content {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Research Section */
+        .research-section {
+            background: var(--bg-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .insights-list {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+        }
+
+        .insight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .insight-item:last-child {
+            border-bottom: none;
+        }
+
+        .insight-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .insight-text {
+            flex: 1;
+        }
+
+        .insight-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .insight-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Personas Section */
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .persona-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .persona-header {
+            background: linear-gradient(135deg, var(--primary-color), #27AE60);
+            padding: 3rem 2.5rem 2rem;
+            color: white;
+        }
+
+        .persona-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .persona-details {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .persona-body {
+            padding: 2.5rem;
+        }
+
+        .persona-section {
+            margin-bottom: 2rem;
+        }
+
+        .persona-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .persona-section-content {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .persona-quote {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            font-style: italic;
+            color: var(--text-dark);
+            margin-top: 2rem;
+        }
+
+        /* Problem Definition */
+        .problem-section {
+            background: var(--text-dark);
+            color: white;
+        }
+
+        .problem-section .section-number {
+            color: var(--primary-color);
+        }
+
+        .problem-section .section-title {
+            color: white;
+        }
+
+        .problem-section .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hmw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .hmw-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hmw-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .hmw-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hmw-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feature-category {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Wireframes Section */
+        .wireframes-section {
+            background: var(--bg-light);
+        }
+
+        .wireframes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .wireframe-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .wireframe-preview {
+            background: #F5F5F5;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid #E0E0E0;
+        }
+
+        .wireframe-placeholder {
+            width: 80%;
+            height: 90%;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #BDBDBD;
+            position: relative;
+        }
+
+        .wireframe-info {
+            padding: 1.5rem;
+        }
+
+        .wireframe-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .wireframe-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Visual Design Section */
+        .visual-design-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .visual-design-section .section-number {
+            color: #FFD93D;
+        }
+
+        .visual-design-section .section-title {
+            color: white;
+        }
+
+        .visual-design-section .section-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .design-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: var(--spacing-md) 0;
+        }
+
+        .principle-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .principle-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .principle-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .principle-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: var(--spacing-sm);
+        }
+
+        .color-swatch {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Testing Section */
+        .testing-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: var(--spacing-md) 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .metric-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Final Solution */
+        .solution-section {
+            background: var(--bg-light);
+        }
+
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: var(--spacing-md);
+            align-items: start;
+        }
+
+        .solution-image {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .solution-feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .solution-feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Reflections */
+        .reflections-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .reflections-section .section-number {
+            color: #FFD93D;
+        }
+
+        .reflections-section .section-title,
+        .reflections-section .section-description {
+            color: white;
+        }
+
+        .reflections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .reflection-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .reflection-emoji {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .reflection-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Next Steps / CTA */
+        .cta-section {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            color: white;
+        }
+
+        .next-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .next-step-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-grid,
+            .stats-grid,
+            .personas-grid,
+            .hmw-grid,
+            .features-grid,
+            .design-principles,
+            .testing-metrics,
+            .solution-features,
+            .reflections-grid,
+            .next-steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wireframes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .wireframes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .color-palette {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">V Yoganath's Portfolio</div>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#personas">Personas</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#reflections">Reflections</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Healthy Dining App</h1>
+                <p class="subtitle">Helping users make healthy and hygienic food choices while eating out</p>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Role</div>
+                        <div class="meta-value">UX/UI Designer</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Timeline</div>
+                        <div class="meta-value">6 weeks</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tools</div>
+                        <div class="meta-value">Figma, Miro, Notion</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Deliverables</div>
+                        <div class="meta-value">Research, Wireframes, Prototype, Testing</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80" alt="Healthy food presentation">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">01 — OVERVIEW</div>
+                <h2 class="section-title">Project Overview</h2>
+                <p class="section-description">
+                    Eating out often means compromising on health and hygiene. This project aims to design an intuitive app that helps users find healthy, hygienic food choices fast.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Problem Statement</h3>
+                    <p class="card-content">
+                        Eating outside often compromises health and hygiene. Users struggle to identify which dishes are truly healthy or safe.
+                    </p>
+                </div>
+
+                <div class="overview-card">
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">Project Goal</h3>
+                    <p class="card-content">
+                        Design an intuitive app that helps users find healthy, hygienic food choices fast with clear information about nutrition and cleanliness.
+                    </p>
+                </div>
+
+                <div class="overview-card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Target Users</h3>
+                    <p class="card-content">
+                        Busy working professionals, college students, and anyone who eats out regularly but wants to maintain a healthy diet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">02 — RESEARCH & INSIGHTS</div>
+                <h2 class="section-title">Understanding User Needs</h2>
+                <p class="section-description">
+                    We conducted user interviews, surveys, and competitor analysis to uncover habits and pain points
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">70%</div>
+                    <p class="stat-label">Check nutrition info only if obvious</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">65%</div>
+                    <p class="stat-label">Would use filters for dietary needs</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">80%</div>
+                    <p class="stat-label">Agreed hygiene ratings boost confidence</p>
+                </div>
+            </div>
+
+            <div class="insights-list">
+                <div class="insight-item">
+                    <div class="insight-icon">👁</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Visibility is Critical</h4>
+                        <p class="insight-description">
+                            Users want at-a-glance indicators (like badges or scores) for healthy choices rather than reading through detailed descriptions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon">🔒</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Trust & Transparency</h4>
+                        <p class="insight-description">
+                            Reliable data (nutrition facts, cleanliness ratings) builds confidence and helps users make informed decisions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon">⚡</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Simplicity Matters</h4>
+                        <p class="insight-description">
+                            Users prefer quick filters and recommendations over reading full menus, especially when making quick decisions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personas Section -->
+    <section id="personas">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03 — USER PERSONAS</div>
+                <h2 class="section-title">Meet Our Users</h2>
+                <p class="section-description">
+                    Based on research, we created personas to guide our design decisions
+                </p>
+            </div>
+
+            <div class="personas-grid">
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <h3 class="persona-name">Ananya</h3>
+                        <p class="persona-details">28, Marketing Executive</p>
+                    </div>
+                    <div class="persona-body">
+                        <div class="persona-section">
+                            <h4 class="persona-section-title">Goals</h4>
+                            <p class="persona-section-content">
+                                Maintain her strict diet even when eating out
+                            </p>
+                        </div>
+
+                        <div class="persona-section">
+                            <h4 class="persona-section-title">Pain Points</h4>
+                            <p class="persona-section-content">
+                                Confusing menu descriptions; no information on how dishes fit her health goals
+                            </p>
+                        </div>
+
+                        <div class="persona-quote">
+                            "I want healthy food but don't know where to start when I'm at a restaurant."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <h3 class="persona-name">Rohan</h3>
+                        <p class="persona-details">24, Graduate Student</p>
+                    </div>
+                    <div class="persona-body">
+                        <div class="persona-section">
+                            <h4 class="persona-section-title">Goals</h4>
+                            <p class="persona-section-content">
+                                Find affordable meals that fit his vegetarian diet and keep calories in check
+                            </p>
+                        </div>
+
+                        <div class="persona-section">
+                            <h4 class="persona-section-title">Pain Points</h4>
+                            <p class="persona-section-content">
+                                Limited vegetarian options; worries about hygiene standards
+                            </p>
+                        </div>
+
+                        <div class="persona-quote">
+                            "Sometimes I can't tell which veggie dishes are actually good for me. I wish there was a quick guide."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Definition -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">04 — PROBLEM DEFINITION</div>
+                <h2 class="section-title">How Might We...</h2>
+                <p class="section-description">
+                    Framing the right questions to guide our design solutions
+                </p>
+            </div>
+
+            <div class="hmw-grid">
+                <div class="hmw-card">
+                    <div class="hmw-number">01</div>
+                    <p class="hmw-text">
+                        How might we help users quickly identify healthy dishes on a menu?
+                    </p>
+                </div>
+
+                <div class="hmw-card">
+                    <div class="hmw-number">02</div>
+                    <p class="hmw-text">
+                        How might we display clear health and hygiene information for each dish?
+                    </p>
+                </div>
+
+                <div class="hmw-card">
+                    <div class="hmw-number">03</div>
+                    <p class="hmw-text">
+                        How might we personalize recommendations based on user preferences and dietary restrictions?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideation Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">05 — IDEATION & FEATURES</div>
+                <h2 class="section-title">Feature Prioritization</h2>
+                <p class="section-description">
+                    Using MoSCoW method to prioritize features based on user needs and business goals
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-category">Must-Have</h3>
+                    <ul class="feature-list">
+                        <li>Health score for each dish</li>
+                        <li>Basic filters (vegetarian, gluten-free)</li>
+                        <li>Hygiene ratings for restaurants</li>
+                        <li>Search functionality</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-category">Should-Have</h3>
+                    <ul class="feature-list">
+                        <li>Personalized meal recommendations</li>
+                        <li>Ingredient breakdowns</li>
+                        <li>Nutrition facts (calories, macros)</li>
+                        <li>User reviews</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-category">Could-Have</h3>
+                    <ul class="feature-list">
+                        <li>Social sharing features</li>
+                        <li>Gamification elements</li>
+                        <li>Friends' recommendations</li>
+                        <li>Rewards for healthy choices</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-category">Won't-Have (Yet)</h3>
+                    <ul class="feature-list">
+                        <li>In-app ordering</li>
+                        <li>Restaurant reservations</li>
+                        <li>Community forums</li>
+                        <li>Meal planning calendar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wireframes Section -->
+    <section class="wireframes-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">06 — WIREFRAMES</div>
+                <h2 class="section-title">Low-Fidelity Explorations</h2>
+                <p class="section-description">
+                    Mobile-first wireframes outlining layout and functionality
+                </p>
+            </div>
+
+            <div class="wireframes-grid">
+                <div class="wireframe-card">
+                    <div class="wireframe-preview">
+                        <div class="wireframe-placeholder"></div>
+                    </div>
+                    <div class="wireframe-info">
+                        <h4 class="wireframe-title">Home Screen</h4>
+                        <p class="wireframe-description">
+                            Search bar, filter shortcuts, and recommendations
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wireframe-card">
+                    <div class="wireframe-preview">
+                        <div class="wireframe-placeholder"></div>
+                    </div>
+                    <div class="wireframe-info">
+                        <h4 class="wireframe-title">Restaurant List</h4>
+                        <p class="wireframe-description">
+                            Search results with health indicators
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wireframe-card">
+                    <div class="wireframe-preview">
+                        <div class="wireframe-placeholder"></div>
+                    </div>
+                    <div class="wireframe-info">
+                        <h4 class="wireframe-title">Dish Detail</h4>
+                        <p class="wireframe-description">
+                            Full nutrition, ingredients, and scores
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wireframe-card">
+                    <div class="wireframe-preview">
+                        <div class="wireframe-placeholder"></div>
+                    </div>
+                    <div class="wireframe-info">
+                        <h4 class="wireframe-title">Filters</h4>
+                        <p class="wireframe-description">
+                            Dietary preferences and thresholds
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Design Section -->
+    <section class="visual-design-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">07 — VISUAL DESIGN</div>
+                <h2 class="section-title">High-Fidelity Prototype</h2>
+                <p class="section-description">
+                    Clean and friendly UI with emphasis on trust and transparency
+                </p>
+            </div>
+
+            <div class="design-principles">
+                <div class="principle-card">
+                    <div class="principle-icon">✨</div>
+                    <h3 class="principle-title">Simple</h3>
+                    <p class="principle-text">
+                        Plenty of whitespace, clear typography, and intuitive icons for easy scanning
+                    </p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🔍</div>
+                    <h3 class="principle-title">Transparent</h3>
+                    <p class="principle-text">
+                        Consistent health badges and hygiene ratings build user trust and confidence
+                    </p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">👤</div>
+                    <h3 class="principle-title">Personalized</h3>
+                    <p class="principle-text">
+                        Tailored recommendations based on user preferences and dietary goals
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; font-size: 1.5rem; margin: 3rem 0 2rem;">Color Palette</h3>
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #2ECC71; color: white;">#2ECC71</div>
+                <div class="color-swatch" style="background: #27AE60; color: white;">#27AE60</div>
+                <div class="color-swatch" style="background: #FF6B6B; color: white;">#FF6B6B</div>
+                <div class="color-swatch" style="background: #3498DB; color: white;">#3498DB</div>
+                <div class="color-swatch" style="background: #2C3E50; color: white;">#2C3E50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">08 — USABILITY TESTING</div>
+                <h2 class="section-title">Validating the Design</h2>
+                <p class="section-description">
+                    Testing with 6 representative users to measure success and gather feedback
+                </p>
+            </div>
+
+            <div class="testing-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">90%</div>
+                    <h3 class="metric-label">Task Success Rate</h3>
+                    <p class="metric-description">
+                        All users successfully completed key tasks like finding healthy options under calorie limits
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">85</div>
+                    <h3 class="metric-label">SUS Score</h3>
+                    <p class="metric-description">
+                        System Usability Scale score indicates high usability and user satisfaction
+                    </p>
+                </div>
+            </div>
+
+            <div class="insights-list">
+                <div class="insight-item">
+                    <div class="insight-icon">🔍</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Enhanced Filter Visibility</h4>
+                        <p class="insight-description">
+                            Moved important filter tags to the top of the Home screen for easier access after users initially missed them
+                        </p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon">📝</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Simplified Information</h4>
+                        <p class="insight-description">
+                            Condensed text on dish details using icons for common data points like calories and dietary preferences
+                        </p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon">⭐</div>
+                    <div class="insight-text">
+                        <h4 class="insight-title">Personalized Recommendations</h4>
+                        <p class="insight-description">
+                            Added "Recommended for You" section based on saved preferences after positive user feedback
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Solution -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">09 — FINAL SOLUTION</div>
+                <h2 class="section-title">The Complete Experience</h2>
+                <p class="section-description">
+                    A polished, user-friendly interface that achieves our design goals
+                </p>
+            </div>
+
+            <div class="solution-features">
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80" alt="Mobile app interface" style="width: 100%; border-radius: 12px;">
+                </div>
+
+                <div class="solution-content">
+                    <div class="solution-feature">
+                        <h3 class="solution-feature-title">
+                            <span class="feature-number">1</span>
+                            Home Feed with Recommendations
+                        </h3>
+                        <p class="card-content">
+                            Personalized suggestions for restaurants and dishes right on the home screen with health highlights like "Top 3 High Protein Dishes Today"
+                        </p>
+                    </div>
+
+                    <div class="solution-feature">
+                        <h3 class="solution-feature-title">
+                            <span class="feature-number">2</span>
+                            Health & Hygiene Scoring
+                        </h3>
+                        <p class="card-content">
+                            Simple algorithm computes health scores based on calories and nutrition balance, integrated with official hygiene grade data
+                        </p>
+                    </div>
+
+                    <div class="solution-feature">
+                        <h3 class="solution-feature-title">
+                            <span class="feature-number">3</span>
+                            Personalized Dashboard
+                        </h3>
+                        <p class="card-content">
+                            Users can set diet preferences and see stats like "You saved 500 calories this week!" with badges for achieving health milestones
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflections -->
+    <section id="reflections" class="reflections-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">10 — REFLECTIONS</div>
+                <h2 class="section-title">Key Learnings</h2>
+                <p class="section-description">
+                    Important lessons that will inform future design decisions
+                </p>
+            </div>
+
+            <div class="reflections-grid">
+                <div class="reflection-card">
+                    <div class="reflection-emoji">🔐</div>
+                    <h3 class="reflection-title">Trust Through Transparency</h3>
+                    <p class="reflection-text">
+                        Users trust the app when health scores and hygiene data are clearly visible. Providing transparent information builds confidence over generic claims.
+                    </p>
+                </div>
+
+                <div class="reflection-card">
+                    <div class="reflection-emoji">⚖️</div>
+                    <h3 class="reflection-title">Balance Detail & Simplicity</h3>
+                    <p class="reflection-text">
+                        There's a fine line between enough information and overload. Present critical data at a glance while allowing deeper details on demand.
+                    </p>
+                </div>
+
+                <div class="reflection-card">
+                    <div class="reflection-emoji">🚀</div>
+                    <h3 class="reflection-title">Future Potential</h3>
+                    <p class="reflection-text">
+                        Opportunities for gamifying healthy choices and community features. Staying iterative will be key to continue improving the experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">11 — NEXT STEPS</div>
+                <h2 class="section-title">Moving Forward</h2>
+            </div>
+
+            <div class="next-steps-grid">
+                <div class="next-step-card">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">Beta Launch</h3>
+                    <p class="step-description">
+                        Release prototype to a small group of target users for real-world testing and collect usage data
+                    </p>
+                </div>
+
+                <div class="next-step-card">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">Restaurant Partnerships</h3>
+                    <p class="step-description">
+                        Integrate actual hygiene and menu data by partnering with local restaurants or using open datasets
+                    </p>
+                </div>
+
+                <div class="next-step-card">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">AI-Driven Recommendations</h3>
+                    <p class="step-description">
+                        Build a recommendation engine that learns from user behavior to suggest meals automatically
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">Designed with care and attention to detail</p>
+            <p class="footer-text">© 2025 Portfolio | All Rights Reserved</p>
+            <div class="footer-links">
+                <a href="#overview">Back to Top</a>
+                <a href="mailto:contact@example.com">Contact</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
